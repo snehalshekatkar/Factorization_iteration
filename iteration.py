@@ -7,7 +7,7 @@ g = open('cycle_lengths.dat', 'a')
 ''' Loop over b '''
 for b in range(1, 201):
     print(b)
-    f = open('Output_data/output_b{}.dat'.format(b), 'w')
+    f = open('Output_data2/output_b{}.txt'.format(b), 'w')
     
     all_l = [] # This array stores the lengths of cycles for each n > 4
     for i in range(1, 105):
@@ -19,24 +19,26 @@ for b in range(1, 201):
             if nn.is_prime(n):
                 n += b
                 if t > 30:
-                    asympt.append(n)
                     if t == 31:
                         N = n
                         l += 1
+                        asympt.append(n)
                     elif t > 31 and N != n and not stop:
                         l += 1
+                        asympt.append(n)
                     else:
                         stop = True
                     
             else:
                 n = sum(nn.factorize(n))
                 if t > 30:
-                    asympt.append(n)
                     if t == 31:
                         N = n
                         l += 1
+                        asympt.append(n)
                     elif t > 31 and N != n and not stop:
                         l += 1
+                        asympt.append(n)
                     else:
                         stop = True
 
