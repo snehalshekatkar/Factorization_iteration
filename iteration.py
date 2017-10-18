@@ -1,13 +1,16 @@
 import natural_numbers as nn
 
-g = open('cycle_lengths.dat', 'w')
+''' Open the file to save the lengths of cycles for each b '''
+g = open('cycle_lengths.dat', 'a')
 
-for b in range(1, 51):
+
+''' Loop over b '''
+for b in range(1, 201):
     print(b)
     f = open('Output_data/output_b{}.dat'.format(b), 'w')
     
-    all_l = []
-    for i in range(1, 101):
+    all_l = [] # This array stores the lengths of cycles for each n > 4
+    for i in range(1, 105):
         l = 0
         stop = False
         n = i    
@@ -43,6 +46,7 @@ for b in range(1, 51):
             
     f.close()        
 
-    g.write(str(b) + '  ' + str(set(all_l)) + '\n')
+    freq = {x:all_l.count(x) for x in all_l}
+    g.write(str(b) + '  ' + ' ' + str(len(freq)) + '  ' +  str(freq) + '\n')
 
 g.close()
