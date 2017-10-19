@@ -7,7 +7,7 @@ g = open('cycle_lengths.dat', 'a')
 ''' Loop over b '''
 for b in range(1, 201):
     print(b)
-    f = open('Output_data/output_b{}.txt'.format(b), 'w')
+    f = open('Output_data_distinct/output_b{}.txt'.format(b), 'w')
     
     all_l = [] # This array stores the lengths of cycles for each n > 4
     for i in range(1, 101):
