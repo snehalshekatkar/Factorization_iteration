@@ -15,7 +15,6 @@ int is_prime(int n){
     else{
     for (int i = 2; i < pow(n, 0.5) + 1; i++){
         if (n % i == 0){
-            //cout << n << " is divisible by " << i << endl;
             return false;
         }
     }
@@ -53,11 +52,8 @@ int *factorize(int n){
 
 int main()
 {
-    //for (int i = 0; i < 20; i++){
-    //    cout << i << "," << is_prime(i) << endl;
-    //}
+    for (int i = 0; i < 20; i++){
+        cout << i << "," << is_prime(i) << endl;
+    }
     //primes_less_than(20);
-    cout << 2 << " " << is_prime(2) << endl;
-    cout << 3 << " " << is_prime(3) << endl;
-    cout << 4 << " " << is_prime(4) << endl;
 }

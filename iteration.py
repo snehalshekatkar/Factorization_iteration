@@ -76,4 +76,4 @@ for b in range(201, 1001):
     g1.write('\n')
 
 g.close()
-g1.close()
+1.close()

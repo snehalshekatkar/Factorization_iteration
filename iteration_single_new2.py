@@ -2,12 +2,16 @@ import natural_numbers as nn
 
 a = 1
 
-for i in range(1, 10):
+f = open('Output_data/output_a{}.txt'.format(a), 'w')
+
+for i in range(1, 10000):
     n = i
     seq = []
 
     ''' Iterate starting with n till the cycle is reached '''
+    T = -1
     while n not in seq:
+        T += 1
         seq.append(n)
         if nn.is_prime(n):
             n += a
@@ -26,5 +30,6 @@ for i in range(1, 10):
     else:
         cycle = seq
 
-        
+    print(i, T, cycle)        
+    f.write(str(i) + ',' + str(len(cycle)) + ',' + str(T) + ',' + str(cycle) + '\n')
     
