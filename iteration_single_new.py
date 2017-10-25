@@ -1,35 +1,35 @@
 import natural_numbers as nn
 
-a = 654 
+a = 1
 
-for i in range(89, 100):
+f = open('Output_data/output_a{}.txt'.format(a), 'w')
+
+for i in range(1, 10000):
     n = i
-    seq = [n]
-    seq2 = [n]
-    first_term = True
+    seq = []
 
-    ''' Iterate starting with n'''
-    while n not in seq2 or first_term:
-        first_term = False
+    ''' Iterate starting with n till the cycle is reached '''
+    T = -1
+    while n not in seq:
+        T += 1
+        seq.append(n)
         if nn.is_prime(n):
             n += a
         else:
             n = sum(nn.factorize(n))
-        seq2.append(n)
-        seq.append(n)
 
     ''' Extract the cycle '''
-    if len(seq2) > 2:
+    seq.append(n) # This is important so that n will appear twice in the sequence
+    if len(seq) > 1:
         j = -2
-        x = seq2[-1]
+        x = seq[-1]
         cycle = [x]
-        while x != seq2[j]:
-            cycle.append(seq2[j])
+        while x != seq[j]:
+            cycle.append(seq[j])
             j -= 1
     else:
-        cycle = seq2
+        cycle = seq
 
-    print(i, seq, seq2)
-    print()
-        
+    print(i, T, cycle)        
+    f.write(str(i) + ',' + str(len(cycle)) + ',' + str(T) + ',' + str(cycle) + '\n')
     

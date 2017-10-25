@@ -24,36 +24,50 @@ int is_prime(int n){
 
 }
 
-int primes_less_than(int n){
-    vector<int> arr;
+// Function that returns all the primes less than n
+std::vector<int> primes_less_than(int n){
+    std::vector<int> arr;
     for (int i = 2; i < n; i++){
        if (is_prime(i) == true){
-            cout << "beta " << i << endl;
+            //cout << "beta " << i << endl;
             arr.push_back(i);
         }
 
     }
 
     //cout << arr << endl;
-    for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++){
-        cout << "alpha " << arr[i] << endl;
+    for (int i = 0; i < arr.size(); i++){
+        //cout << "alpha " << arr[i] << endl;
     }
-    return 0;
+
+    return arr;
 }        
         
-
-int *factorize(int n){
+// This function returns all the prime factors of the number n
+std::vector<int> factorize(int n){
     
-    if (n == 0 || n == 1){
-        return 0;
+    std::vector<int> factors;
+    std:: vector<int> p = primes_less_than(n);
+    for (int i = 0; i < p.size(); i++){
+        if (n % p[i] == 0){
+            int dummy_n = n;
+            while (dummy_n % p[i] == 0 && dummy_n != 0){
+                factors.push_back(p[i]);
+                dummy_n /= p[i];
+            }
+        }
     }
+    
+    return factors;
 
 }
 
 int main()
 {
-    for (int i = 0; i < 20; i++){
-        cout << i << "," << is_prime(i) << endl;
+    std:: vector<int> p = factorize(144);
+
+    for (int i = 0; i < p.size(); i++){
+
+        cout << p[i]  << endl;
     }
-    //primes_less_than(20);
 }
